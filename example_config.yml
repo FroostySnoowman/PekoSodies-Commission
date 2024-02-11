@@ -1,0 +1,10 @@
+General:
+    FILE_NAME: "your_file_name.txt"
+
+Google:
+    GOOGLE_CLIENT_SECRET_FILE_NAME: ""
+    GOOGLE_SPREADSHEET_ID: ""
+
+Dropbox:
+    DROPBOX_ACCESS_TOKEN: ""
+    DROPBOX_FILE_PATH: "/path/to/your_file_name.txt"
