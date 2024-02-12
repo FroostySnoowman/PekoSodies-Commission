@@ -1,5 +1,8 @@
 # PekoSodies Spreadsheet Exporter and Uploader Script
 
+## General Setup
+First, install Python 3.X and the required libraries through `pip install -r requirements.txt`.
+
 ## Config
 The config is designed to be as user friendly as possible, allowing for everything to be configurable.
 
