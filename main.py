@@ -15,11 +15,7 @@ dropbox_acces_token = data["Dropbox"]["DROPBOX_ACCESS_TOKEN"]
 dropbox_file_path = data["Dropbox"]["DROPBOX_FILE_PATH"]
 
 async def export_spreadsheet():
-<<<<<<< HEAD
-    sheets = Sheets.from_files('client_secret_377747458309-3rcsmr09toi9mnb155msih5lqdngi28f.apps.googleusercontent.com.json')
-=======
     sheets = Sheets.from_files(f'{pathlib.Path(__file__).parent.absolute()}/{google_client_secret_file_name}')
->>>>>>> 3af909e5aa7b156f5bce5c2271382a1b939b26c8
 
     spreadsheet = sheets[google_spreadsheet_id]
 
@@ -54,9 +50,4 @@ async def run_every_hour():
 
 if __name__ == "__main__":
     print("Script has started running!")
-<<<<<<< HEAD
-    print(google_client_secret_file_name)
     asyncio.run(run_every_hour())
-=======
-    asyncio.run(run_every_hour())
->>>>>>> 3af909e5aa7b156f5bce5c2271382a1b939b26c8
