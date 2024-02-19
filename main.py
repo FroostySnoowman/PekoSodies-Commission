@@ -1,10 +1,11 @@
 import dropbox
 import asyncio
+import pathlib
 import yaml
 from datetime import datetime, timedelta
 from gsheets import Sheets
 
-with open('config.yml', 'r') as file:
+with open(f'{pathlib.Path(__file__).parent.absolute()}/config.yml', 'r') as file:
     data = yaml.safe_load(file)
 
 file_name = data["General"]["FILE_NAME"]
