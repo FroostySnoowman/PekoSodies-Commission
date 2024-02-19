@@ -29,7 +29,7 @@ async def upload_txt():
     dbx_token = dropbox_acces_token
     dbx = dropbox.Dropbox(dbx_token)
 
-    with open(file_name, "rb") as f:
+    with open(f'{pathlib.Path(__file__).parent.absolute()}/{file_name}', "rb") as f:
         dbx.files_upload(f.read(), dropbox_file_path, mode=dropbox.files.WriteMode('overwrite'))
     
     print(f"Successfully uploaded the file to Dropbox at {datetime.now()}")
