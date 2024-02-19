@@ -23,7 +23,7 @@ async def export_spreadsheet():
 
     df = sheet.to_frame()
 
-    df.to_csv(file_name, sep='\t', index=False)
+    df.to_csv(f'{pathlib.Path(__file__).parent.absolute()}/{file_name}', sep='\t', index=False)
 
 async def upload_txt():
     dbx_token = dropbox_acces_token
