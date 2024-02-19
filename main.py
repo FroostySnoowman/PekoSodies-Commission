@@ -15,7 +15,7 @@ dropbox_acces_token = data["Dropbox"]["DROPBOX_ACCESS_TOKEN"]
 dropbox_file_path = data["Dropbox"]["DROPBOX_FILE_PATH"]
 
 async def export_spreadsheet():
-    sheets = Sheets.from_files(google_client_secret_file_name)
+    sheets = Sheets.from_files(f'{pathlib.Path(__file__).parent.absolute()}/{google_client_secret_file_name}')
 
     spreadsheet = sheets[google_spreadsheet_id]
 
