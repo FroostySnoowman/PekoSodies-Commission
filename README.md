@@ -37,3 +37,10 @@ Dropbox:
     DROPBOX_FILE_PATH: ""
 ```
 This is where you will input the path where you want the file to be uploaded in. You can leave it as just the txt file or you can specify a specific path. `/path/to/your_file_name.txt` is an example of a specific path and `your_file_name.txt` is an example of leaving it as the txt file. This will automatically create the folders necessary for the path.
+
+```yml
+Dropbox:
+    APP_KEY: ""
+    APP_SECRET: ""
+```
+This is found in the same place as the access token. This allows you to be assisted with the regenerate token process.
