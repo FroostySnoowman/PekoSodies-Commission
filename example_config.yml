@@ -6,5 +6,7 @@ Google:
     GOOGLE_SPREADSHEET_ID: ""
 
 Dropbox:
+    APP_KEY: ""
+    APP_SECRET: ""
     DROPBOX_ACCESS_TOKEN: ""
     DROPBOX_FILE_PATH: "/path/to/your_file_name.txt"

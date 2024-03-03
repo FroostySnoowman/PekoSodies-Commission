@@ -54,30 +54,27 @@ async def run_every_hour():
             seconds_until_next_run = (next_run - now).total_seconds()
             await asyncio.sleep(seconds_until_next_run)
             await main()
-    except Exception as e:
-        if "refresh" in e or "expired" in e:
-            url = f'https://www.dropbox.com/oauth2/authorize?client_id={app_key}&' \
-                f'response_type=code&token_access_type=offline'
-            webbrowser.open(url)
+    except dropbox.exceptions.AuthError:
+        url = f'https://www.dropbox.com/oauth2/authorize?client_id={app_key}&' \
+            f'response_type=code&token_access_type=offline'
+        webbrowser.open(url)
 
-            ACCESS_CODE_GENERATED = input("Enter access token: ")
+        ACCESS_CODE_GENERATED = input("Enter access token: ")
 
-            BASIC_AUTH = base64.b64encode(f'{app_key}:{app_secret}'.encode())
+        BASIC_AUTH = base64.b64encode(f'{app_key}:{app_secret}'.encode())
 
-            headers = {
-                'Authorization': f"Basic {BASIC_AUTH}",
-                'Content-Type': 'application/x-www-form-urlencoded',
-            }
+        headers = {
+            'Authorization': f"Basic {BASIC_AUTH}",
+            'Content-Type': 'application/x-www-form-urlencoded',
+        }
 
-            data = f'code={ACCESS_CODE_GENERATED}&grant_type=authorization_code'
+        data = f'code={ACCESS_CODE_GENERATED}&grant_type=authorization_code'
 
-            response = requests.post('https://api.dropboxapi.com/oauth2/token',
-                                    data=data,
-                                    auth=(app_key, app_secret))
-            print(json.dumps(json.loads(response.text), indent=2))
-            await main()
-        else:
-            print(e)
+        response = requests.post('https://api.dropboxapi.com/oauth2/token',
+                                data=data,
+                                auth=(app_key, app_secret))
+        print(json.dumps(json.loads(response.text), indent=2))
+        await main()
 
 if __name__ == "__main__":
     print("Script has started running!")
