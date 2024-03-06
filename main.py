@@ -1,3 +1,4 @@
+from ruamel.yaml import YAML
 import webbrowser
 import requests
 import dropbox
@@ -73,7 +74,19 @@ async def run_every_hour():
         response = requests.post('https://api.dropboxapi.com/oauth2/token',
                                 data=data,
                                 auth=(app_key, app_secret))
-        print(json.dumps(json.loads(response.text), indent=2))
+
+        new_access_token = json.dumps(json.loads(response.text), indent=2)
+
+        yaml = YAML()
+        yaml.preserve_quotes = True
+        yaml.indent(mapping=4, sequence=4, offset=2)
+        with open('config.yml', 'r') as file:
+            new_data = yaml.load(file)
+        new_data['Dropbox']['DROPBOX_ACCESS_TOKEN'] = new_access_token
+
+        with open('config.yml', 'w') as file:
+            yaml.dump(data, file)
+        
         await main()
 
 if __name__ == "__main__":
