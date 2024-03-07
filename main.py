@@ -1,4 +1,3 @@
-from ruamel.yaml import YAML
 import webbrowser
 import requests
 import dropbox
@@ -8,6 +7,7 @@ import base64
 import yaml
 import json
 from datetime import datetime, timedelta
+from ruamel.yaml import YAML
 from gsheets import Sheets
 
 with open(f'{pathlib.Path(__file__).parent.absolute()}/config.yml', 'r') as file:
@@ -85,7 +85,7 @@ async def run_every_hour():
         new_data['Dropbox']['DROPBOX_ACCESS_TOKEN'] = new_access_token
 
         with open('config.yml', 'w') as file:
-            yaml.dump(new_data, file)  # Dump the correct data
+            yaml.dump(new_data, file)
         
         await main()
 

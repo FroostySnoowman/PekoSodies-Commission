@@ -9,4 +9,4 @@ Dropbox:
     APP_KEY: ""
     APP_SECRET: ""
     DROPBOX_ACCESS_TOKEN: ""
-    DROPBOX_FILE_PATH: "/path/to/your_file_name.txt"
+    DROPBOX_FILE_PATH: "/path/to/your_file_name.txt" # must start with "/"
