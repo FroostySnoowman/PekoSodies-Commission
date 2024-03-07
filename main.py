@@ -75,7 +75,7 @@ async def run_every_hour():
                                 data=data,
                                 auth=(app_key, app_secret))
 
-        new_access_token = json.dumps(json.loads(response.text), indent=2)
+        new_access_token = json.loads(response.text)['access_token']
 
         yaml = YAML()
         yaml.preserve_quotes = True
@@ -85,7 +85,7 @@ async def run_every_hour():
         new_data['Dropbox']['DROPBOX_ACCESS_TOKEN'] = new_access_token
 
         with open('config.yml', 'w') as file:
-            yaml.dump(data, file)
+            yaml.dump(new_data, file)  # Dump the correct data
         
         await main()
 
