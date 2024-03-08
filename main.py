@@ -86,6 +86,8 @@ async def run_every_hour():
 
         with open('config.yml', 'w') as file:
             yaml.dump(new_data, file)
+
+        await asyncio.sleep(5)
         
         await main()
 
